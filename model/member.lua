@@ -427,7 +427,7 @@ function Member.object:send_invitation(template_file, subject)
   self.invite_code_expiry = db:query("SELECT now() + '2 days'::interval as expiry", "object").expiry
   self:save()
   
-  local parelonBaseUrl = "https://test.parelon.com/lf/"
+  local parelonBaseUrl = "https://test.parelon.com/parelon/scuole/"
   local subject = subject
   local content
   
@@ -440,9 +440,9 @@ function Member.object:send_invitation(template_file, subject)
     content = slot.use_temporary(function()
       slot.put(_"Hello\n\n")
   		       slot.put(_"You are invited to Parlamento Elettronico Online. To register please click the following link:\n\n")
-  		       slot.put("https://test.parelon.com/lf/index/register.html?invite=" .. self.invite_code .. "\n\nbefore 24h.")
+  		       slot.put("https://test.parelon.com/parelon/scuole/index/register.html?invite=" .. self.invite_code .. "\n\nbefore 24h.")
   		       slot.put(_"If this link is not working, please open following url in your web browser:\n\n")
-  		       slot.put("https://test.parelon.com/lf/index/register.html\n\n")
+  		       slot.put("https://test.parelon.com/parelon/scuole/index/register.html\n\n")
   		       slot.put(_"On that page please enter the invite key:\n\n")
   		       slot.put("*"..self.invite_code.."*\n")
   		       slot.put(_"The invite code will expire in two days: after that, you will need a new invite code generated from your auditor.\n\nBest wishes.\n\nParelon Team")
@@ -476,9 +476,9 @@ function Member.object:set_notify_email(notify_email)
     local content = slot.use_temporary(function()
         slot.put(_ "Hello " .. self.name .. ",\n\n")
         slot.put(_ "Please confirm your email address by clicking the following link:\n\n")
-        slot.put("https://test.parelon.com/lf/index/confirm_notify_email.html?secret=" .. self.notify_email_secret .. "\n\n")
+        slot.put("https://test.parelon.com/parelon/scuole/index/confirm_notify_email.html?secret=" .. self.notify_email_secret .. "\n\n")
         slot.put(_ "If this link is not working, please open following url in your web browser:\n\n")
-        slot.put("https://test.parelon.com/lf/index/confirm_notify_email.html\n\n")
+        slot.put("https://test.parelon.com/parelon/scuole/index/confirm_notify_email.html\n\n")
         slot.put(_ "On that page please enter the confirmation code:\n\n")
         slot.put(self.notify_email_secret .. "\n\n")
     end)

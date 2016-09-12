@@ -290,116 +290,121 @@ if not issues_selector_voted or not issues_selector_myinitiatives then
     return true
 end
 ui.container {
-	attr = { class = "row" },
+	attr = { class = "row text-center" },
 	content = function()
-		ui.container {
-			attr = { class = "panel-group", id = "accordion", role = "tablist", ariamultiselectable = "true" },
-			content = function()
-				ui.container {
-					attr = { class = "panel panel-default text-center"},
-					content = function()	  
-						ui.container {
-							attr = { class = "btn btn-primary large_btn", role="tab", id="headingOne"},
-							content = function()						                     
-							ui.heading { 
-								level = 3, attr = { datatoggle="collapse", class = "panel-title", href="#issue_voted", ariaexpanded="true", ariacontrols="issue_voted"},  
-								}
-								ui.image { static = "png/arrow-down-icon.png" }					                                   
-								ui.link {content = _ " LE TUE VOTAZIONI"}
-								
-						end
-						}
-						ui.container {
-								attr = { id="issue_voted", class="panel-collapse collapse",  role="tabpanel", arialabelledby="headingOne"},
-								content = function()
+	ui.container {
+		attr = { class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 spaceline spaceline-bottom" },
+		content = function()
+			ui.container {
+				attr = { class = "panel-group", id = "accordion", role = "tablist", ariamultiselectable = "true" },
+				content = function()
+					ui.container {
+						attr = { class = "panel panel-default"},
+						content = function()	  
+							ui.container {
+								attr = { class = "btn btn-primary full_btn ", role="tab", id="headingOne"},
+								content = function()						                     
+								ui.heading { 
+									level = 3, attr = { datatoggle="collapse", class = "panel-title", href="#issue_voted", ariaexpanded="true", ariacontrols="issue_voted"},  
+									}
+									ui.image { static = "png/arrow-down-icon.png" }					                                   
+									ui.link {content = _ " LE TUE VOTAZIONI"}
+									
+							end
+							}
+							ui.container {
+									attr = { id="issue_voted", class="panel-collapse collapse",  role="tabpanel", arialabelledby="headingOne"},
+									content = function()
+										ui.container {
+												attr = { class="panel-body"},
+												content = function()
+			                                ui.container {
+			                                    attr = { class = "row" },
+			                                    content = function()
+			                                        execute.view {
+			                                            module = "issue_private",
+			                                            view = "_list_ext2_bs",
+			                                            params = {
+			                                                state = state,
+			                                                orderby = orderby,
+			                                                desc = desc,
+			                                                scope = scope,
+			                                                interest = interest,
+			                                                list = "voted",
+			                                                ftl_btns = ftl_btns,
+			                                                for_member = member,
+			                                                for_details = false,
+			                                                selector = issues_selector_voted
+			                                            }
+			                                        }
+			                                  end
+			                               }
+											 end
+										 }   
+							   end
+						   } 					                    
+					  end
+					}
+			  end 
+			}
+	  end
+	}
+	ui.container {
+		attr = { class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 spaceline spaceline-bottom" },
+		content = function()
+			ui.container {
+				attr = { class = "panel-group", id = "accordion", role = "tablist", ariamultiselectable = "true" },
+				content = function()
+					ui.container {
+						attr = { class = "panel panel-default"},
+						content = function()	  
+							ui.container {
+								attr = { class = "btn btn-primary full_btn", role="tab", id="headingTwo"},
+								content = function()						                     
+								ui.heading { 
+									level = 3, attr = { datatoggle="collapse", class = "panel-title", href="#issue_proposal", ariaexpanded="true", ariacontrols="issue_proposal"},  
+									}
+									ui.image { static = "png/arrow-down-icon.png" }					                                   
+									ui.link {content = _ " LE TUE PROPOSTE"}
+									
+							end
+							}
+							ui.container {
+									attr = { id="issue_proposal", class="panel-collapse collapse",  role="tabpanel", arialabelledby="headingTwo"},
+									content = function()
 									ui.container {
 											attr = { class="panel-body"},
 											content = function()
-		                                ui.container {
-		                                    attr = { class = "row" },
-		                                    content = function()
-		                                        execute.view {
-		                                            module = "issue_private",
-		                                            view = "_list_ext2_bs",
-		                                            params = {
-		                                                state = state,
-		                                                orderby = orderby,
-		                                                desc = desc,
-		                                                scope = scope,
-		                                                interest = interest,
-		                                                list = "voted",
-		                                                ftl_btns = ftl_btns,
-		                                                for_member = member,
-		                                                for_details = false,
-		                                                selector = issues_selector_voted
-		                                            }
-		                                        }
-		                                  end
-		                               }
-										 end
-									 }   
-						   end
-					   } 					                    
-				  end
-				}
-		  end 
-		}
-  end
-}
-ui.container {
-	attr = { class = "row spaceline spaceline-bottom" },
-	content = function()
-		ui.container {
-			attr = { class = "panel-group", id = "accordion", role = "tablist", ariamultiselectable = "true" },
-			content = function()
-				ui.container {
-					attr = { class = "panel panel-default text-center"},
-					content = function()	  
-						ui.container {
-							attr = { class = "btn btn-primary large_btn", role="tab", id="headingTwo"},
-							content = function()						                     
-							ui.heading { 
-								level = 3, attr = { datatoggle="collapse", class = "panel-title", href="#issue_proposal", ariaexpanded="true", ariacontrols="issue_proposal"},  
-								}
-								ui.image { static = "png/arrow-down-icon.png" }					                                   
-								ui.link {content = _ " LE TUE PROPOSTE"}
-								
-						end
-						}
-						ui.container {
-								attr = { id="issue_proposal", class="panel-collapse collapse",  role="tabpanel", arialabelledby="headingTwo"},
-								content = function()
-								ui.container {
-										attr = { class="panel-body"},
-										content = function()
-                                ui.container {
-                                    attr = { class = "row" },
-                                    content = function()
-                                        execute.view {
-                                            module = "issue_private",
-                                            view = "_list_ext2_bs",
-                                            params = {
-                                                state = state,
-                                                orderby = orderby,
-                                                desc = desc,
-                                                scope = scope,
-                                                interest = interest,
-                                                list = "proposals",
-                                                ftl_btns = ftl_btns,
-                                                for_member = member,
-                                                for_details = false,
-                                                selector = issues_selector_myinitiatives
-                                            }
-                                        }
-                                    end
-                                }
-									end
-								}   
-							end
-							}					                    
-				end
-				}
-		end 
-		}
+	                                ui.container {
+	                                    attr = { class = "row" },
+	                                    content = function()
+	                                        execute.view {
+	                                            module = "issue_private",
+	                                            view = "_list_ext2_bs",
+	                                            params = {
+	                                                state = state,
+	                                                orderby = orderby,
+	                                                desc = desc,
+	                                                scope = scope,
+	                                                interest = interest,
+	                                                list = "proposals",
+	                                                ftl_btns = ftl_btns,
+	                                                for_member = member,
+	                                                for_details = false,
+	                                                selector = issues_selector_myinitiatives
+	                                            }
+	                                        }
+	                                    end
+	                                }
+										end
+									}   
+								end
+								}					                    
+					end
+					}
+			end 
+			}
+		end
+	}
 	end
 }

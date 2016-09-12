@@ -18,14 +18,13 @@ ui.container {
    attr = { class = "row" },
    content = function()
         ui.container {
-            attr = { class = "col-md-3 col-md-offset-1 label label-fix-size text-center h2" },
+            attr = { class = "col-md-6 col-md-offset-3 col-xs-12 label label-warning text-center h1" },
             content = function()
                 if not config.single_unit_id then
                     ui.link {
                         module = "unit_private",
                         view = "show",
                         id = unit.id,
-                        attr = { class = "unit_name" },
                         content = unit.name
                     }
                 else
@@ -33,7 +32,6 @@ ui.container {
                         module = "unit_private",
                         view = "show",
                         id = unit.id,
-                        attr = { class = "unit_name" },
                         content = config.instance_name .. " &middot; " .. _ "LiquidFeedback"
                     }
                 end

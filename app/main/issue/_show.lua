@@ -22,7 +22,6 @@ elseif vote_comment_able then
     vote_link_text = direct_voter and _ "Update voting comment"
 end
 
-
 local class = "row"
 if issue.is_interested then
     class = class .. "row"
