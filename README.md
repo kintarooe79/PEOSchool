@@ -1,14 +1,13 @@
-Parlamento Elettronico Online
+Parlamento Elettronico Online - School Edition
 ==========================
 
-"Parlamento Elettronico Online" is a fork of the Liquid Feedback platform 
+"Parlamento Elettronico Online - School Edition" is a fork of the Liquid Feedback platform 
 
 
 
-Progetto Parlamento Elettronico REGIONALE  v0.19
+Progetto Peo School
 
-
-GRUPPO DISCUSSIONE PUBBLICO: https://www.facebook.com/groups/discussione.parlamento.m5slazio/
+SITO PIATTAFORMA: https://test.parelon.com/parelon/scuole
 
 SITO WEB: http://www.parelon.it/
 
