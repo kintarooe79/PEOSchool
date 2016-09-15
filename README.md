@@ -13,7 +13,6 @@ SITO WEB: http://www.parelon.it/
 
 PAGINA UFFICIALE FACEBOOK: https://www.facebook.com/ParlamentoElettronicoOnline
 
-WIKI : https://github.com/Movimento5StelleLazio/ParlamentoElettronicoM5S/wiki
 
 
 
