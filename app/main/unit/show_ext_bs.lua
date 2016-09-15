@@ -17,7 +17,7 @@ else
     areas_selector:join("privilege", nil, { "privilege.unit_id = area.unit_id AND privilege.member_id = ? AND privilege.voting_right", member.id })
 end
 
-areas_selector:join("unit", nil, "unit.id = area.unit_id AND unit.public ")
+areas_selector:join("unit", nil, "unit.id = area.unit_id AND unit.public AND unit.active")
 ui.title(function()
     ui.container {
         attr = { class = "row" },
