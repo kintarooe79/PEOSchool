@@ -243,7 +243,7 @@ form.unit_selector {
 }
 
 .page_head .title, .issue .context, .initiative_head .title {
-    padding: 20px 10px 20px 10px;
+    padding: 8px 10px 2px 10px;
 }
 
 .initiative_head .draft_version {
@@ -295,7 +295,6 @@ form.unit_selector {
 
 .page_head .actions:last-child, .page_head .unit_head .content:last-child, .page_head .area_head .content:last-child, .issue .content:last-child, .initiative_head .content:last-child, .area_list .unit_head .content:last-child, .area_list .area .content:last-child {
     padding: 5px 10px 7px 10px;
-    margin: 23px;
 }
 
 .page_head .initiative_list, .issue .initiative_list {
@@ -441,7 +440,31 @@ a.delegation_info:hover, a.delegation_info:focus {
     border-bottom: none;
 }
 
+.ui_filter a {
+    font-weight: bold;
+    margin-right: 0;
+    background-color: #fff;
+    padding: 0.5ex 0.5em;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    font-size: 120%;
+}
 
+.ui_filter_head a.active {
+    border-color: #ffc14b #ffc14b #fea700;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    *background-color: #ffc14b;
+    text-decoration: none;
+    background: -webkit-linear-gradient(top, #f0ee8d, #ffc14b);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #666),
+    color-stop(100%, #222));
+    background: -moz-linear-gradient(#f0ee8d, #ffc14b);
+    background: -ms-linear-gradient(#f0ee8d, #ffc14b);
+    background: -o-linear-gradient(#f0ee8d, #ffc14b);
+    background: linear-gradient(#f0ee8d, #ffc14b);
+    background-color: #444;
+    color: #000;
+}
 
 .active {
   /*background-color: #444;*/
@@ -705,7 +728,7 @@ text-alin
     -webkit-box-shadow: inset 0px 2px 7px rgba(0, 0, 0, .35);
     -moz-box-shadow: inset 0px 2px 7px rgba(0, 0, 0, .35);
     box-shadow: inset 0px 2px 7px rgba(0, 0, 0, .35);
-    padding: 8px 8px 8px 54px;
+    padding: 8px 8px 8px 8px;
     color: #000000;
     background-color: #ffffff;
     -webkit-border-radius: 10px;
@@ -806,26 +829,30 @@ text-alin
 
 .initiative .bar {
     margin-right: 0.3em;
+    border: 1px solid #F4C87E;
     padding: 0.1em;
     height: 1.3ex;
 }
 
 .initiative .rank, .initiative .bar, .initiative .interest {
     float: left;
+    margin-right: 0.3em;
 }
 
 .initiative .rank {
-    max-width: 56px;
+    width: 2.5em;
 }
 
 .initiative .interest {
-    max-width: 56px;
+    width: 20px;
+    height: 16px;
+    line-height: 100%;
 }
 
 .initiative .name {
     line-height: 130%;
-    margin-left: 180px;
-    font-size: 130%;
+    margin-left: 168px;
+    font-size: 115%;
 }
 
 .initiative.selected .name {
@@ -905,7 +932,7 @@ x.initiative_link.potentially_supported {
 
 .member_thumb {
     text-decoration: none;
-    width: 418px;
+    width: 285px;
     height: 65px;
     display: block;
     float: left;

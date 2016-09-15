@@ -1,0 +1,29 @@
+function checkOtpToken() {
+	var $ = jQuery.noConflict();
+	$(document).ready( function() {
+		var user = $("#username_field").val();
+		var otp = $("#otp_field").val();
+		$.ajax({
+			type: "GET",
+			url: "https://autenticazione.parelon.com/validate/check",
+			data: {"user": user, "pass": otp},
+			dataType: "json",
+			xhrFields: {
+    				withCredentials: 'true'
+   			},
+			success: function (data, status, jqXHR) {
+				/*var obj = jQuery.parseJSON(data);
+				console.log("data: "+JSON.stringify(data));*/
+				if( data.result.status && data.result.value ) {
+					$("#login_div").submit();
+				} else {
+					$("#layout_error").text = "Invalid login name or password or OTP!";
+				}
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$("#layout_error").text = "Generic error: " + errorThrown + ". Please try again.";
+				alert("Generic error: " + errorThrown + ". Please try again.");
+			}
+		});	
+	});
+}

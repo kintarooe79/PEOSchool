@@ -1,22 +1,22 @@
 function ui.tabs(tabs)
     local attr = tabs.attr or {}
-    attr.class = (attr.class and attr.class .. " " or "") .. "row"
+    attr.class = (attr.class and attr.class .. " " or "") .. "row-fluid"
     ui.container {
         attr = attr,
         content = function()
             local params = param.get_all_cgi()
             local current_tab = params["tab"]
             ui.container {
-                attr = { class = "row" },
+                attr = { class = "row-fluid" },
                 content = function()
                     ui.container {
-                        attr = { class = "col-md-12 well text-center spaceline spaceline-bottom" },
+                        attr = { class = "span12 well text-center spaceline spaceline-bottom" },
                         content = function()
                             ui.container {
-                                attr = { class = "row" },
+                                attr = { class = "row-fluid" },
                                 content = function()
                                     ui.container {
-                                        attr = { class = "col-md-11" },
+                                        attr = { class = "span11" },
                                         content = function()
                                             for i, tab in ipairs(tabs) do
                                                 local params = param.get_all_cgi()
@@ -54,24 +54,19 @@ function ui.tabs(tabs)
                 end
                 if tab.name == current_tab or not current_tab and i == 1 then
                     ui.container {
-                        attr = { class = "row" },
+                        attr = { class = "table table-stripped" },
                         content = function()
-			                    ui.container {
-			                        attr = { class = "col-md-12 slot_head" },
-			                        content = function() 
-				                            if tab.content then
-				                                tab.content()
-				                            else
-				                                execute.view {
-				                                    module = tab.module,
-				                                    view = tab.view,
-				                                    id = tab.id,
-				                                    params = tab.params,
-				                                }
-				                            end
-			                        end
-			                    }
-	                    end
+                            if tab.content then
+                                tab.content()
+                            else
+                                execute.view {
+                                    module = tab.module,
+                                    view = tab.view,
+                                    id = tab.id,
+                                    params = tab.params,
+                                }
+                            end
+                        end
                     }
                 end
             end

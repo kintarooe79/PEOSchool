@@ -243,10 +243,10 @@ if not issues_selector_voted or not issues_selector_myinitiatives then
     return true
 end
 ui.container {
-	attr = { class = "row" },
+	attr = { class = "row text-center" },
 	content = function()
 	ui.container {
-		attr = { class = "col-lg-6 col-md-6 col-sm-12 col-xs-12" },
+		attr = { class = "col-lg-6 col-md-6 col-sm-12 col-xs-12 spaceline spaceline-bottom" },
 		content = function()
 			ui.container {
 				attr = { class = "panel-group", id = "accordion", role = "tablist", ariamultiselectable = "true" },
@@ -255,7 +255,7 @@ ui.container {
 						attr = { class = "panel panel-default"},
 						content = function()	  
 							ui.container {
-								attr = { class = "btn btn-primary large_btn ", role="tab", id="headingOne"},
+								attr = { class = "btn btn-primary full_btn ", role="tab", id="headingOne"},
 								content = function()						                     
 								ui.heading { 
 									level = 3, attr = { datatoggle="collapse", class = "panel-title", href="#issue_voted", ariaexpanded="true", ariacontrols="issue_voted"},  
@@ -312,7 +312,7 @@ ui.container {
 						attr = { class = "panel panel-default"},
 						content = function()	  
 							ui.container {
-								attr = { class = "btn btn-primary large_btn", role="tab", id="headingTwo"},
+								attr = { class = "btn btn-primary full_btn", role="tab", id="headingTwo"},
 								content = function()						                     
 								ui.heading { 
 									level = 3, attr = { datatoggle="collapse", class = "panel-title", href="#issue_proposal", ariaexpanded="true", ariacontrols="issue_proposal"},  
