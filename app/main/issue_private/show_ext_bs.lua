@@ -390,6 +390,79 @@ ui.container {
                                     end
                                 }
 
+ui.container {
+                    attr = { class = "row spaceline" },
+                    content = function()
+                        ui.container {
+                            attr = { class = "col-md-12" },
+                            content = function()
+                                ui.container {
+                                    attr = { class = "row" },
+                                    content = function()
+                                        ui.container {
+                                            attr = { class = "col-md-10" },
+                                            content = function()
+                                                ui.heading { level = 3, attr = { class = "label label-warning-tbox" }, content = _ "Attachments" }
+                                            end
+                                        }
+                                ui.container {
+                                    attr = { class = "row" },
+                                    content = function()
+                                        ui.container {
+                                            attr = { class = "col-md-12  well-inside paper " },
+                                            content = function()
+						ui.container {
+                                                    attr = { class = "row spaceline2" },
+                                                    content = function()
+	                                                       ui.container {
+	                                                            attr = { class = "col-md-12  col-sm-12 col-xs-12 text-center spaceline" },
+	                                                           content = function()
+	                                                                ui.container {
+	                                                                    content = function()
+	                                                                    	local resource = ResourceIssue:by_issue_id(issue_id)
+	                                                                        if resource ~= nil then
+	                                                                            ui.container {
+									                    attr = { class = "col-md-12 col-sm-12 col-xs-12" },
+									                    content = function()
+									                    execute.view { 
+												module = "attachment",
+												view = "list",
+												id = issue.id
+											    }
+									                    end
+									                }	                                                                       
+	                                                                        end
+	                                                                    		if issue.member_id == app.session.member_id and not issue.half_frozen and not issue.closed then
+					                                                                	ui.link {
+					                                                                		module = "issue",
+					                                                                		view = "edit_resources",
+					                                                                		id = issue.id,
+					                                                                		attr = { class = "btn btn-primary btn-large large_btn" },
+					                                                                		text = _"Change Resources url"
+					                                                                	}
+	                                                                    	end
+	                                                                    end
+	                                                                }
+	                                                            end
+	                                                       }
+                                    end
+                                }
+                            end
+                        }
+                    end
+                }
+		end
+		}
+		end
+		}
+	end
+ }
+
+
+
+
+
+
                                 if app.session.member and not issue.closed then
 
 
