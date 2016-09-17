@@ -1,6 +1,6 @@
 slot.set_layout("custom")
-local issue_id = param.get_id()
-local resource = ResourceIssue:by_issue_id(issue_id) 
+local initiative_id = param.get_id()
+local resource = Resource:all_resources_by_type(initiative_id, "archive_url") 
 
 ui.container {
   attr = { class = "row spaceline" },
