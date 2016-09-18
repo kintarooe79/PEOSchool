@@ -71,7 +71,7 @@ ui.title(function()
                     if app.session.member then
                         ui.link {
                             attr = { class = "btn btn-primary fixclick btn-back h2" },
-                            module = "area",
+                            module = "area_private",
                             id = issue.area.id,
                             view = "show_ext_bs",
                             params = param.get_all_cgi(),
