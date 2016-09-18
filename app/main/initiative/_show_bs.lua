@@ -613,10 +613,9 @@ ui.container {
                               content = function()
                                 ui.container {
                                   content = function()
-                                    local resource = Resource:by_initiative_id(initiative.id)
+                                    local resource = Resource:all_resources_by_type(initiative_id, "video") 
                                     if resource ~= nil then
                                       if resource.type == "video" then
-
                                         if resource.url == "" or resource.url == nil then
                                           ui.image {attr = { class = "img-responsive" }, static = "png/video-player.png" }
                                         elseif string.find(resource.url, "https://www.youtube.com/watch") then
