@@ -22,7 +22,7 @@ ui.title(function()
                 content = function()
                     ui.link {
                         attr = { class = "btn btn-primary text-center fixclick btn-back" },
-                        module = "area",
+                        module = "area_private",
                         id = area.id,
                         view = "filters_bs",
                         params = { create = create },

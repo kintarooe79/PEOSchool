@@ -20,7 +20,7 @@ ui.title(function()
                 content = function()
                     ui.link {
                         attr = { class = "btn btn-primary fixclick btn-back text-center" },
-                        module = "unit",
+                        module = "unit_private",
                         view = "show_ext_bs",
                         id = area.unit_id,
                         params = { filter = "my_areas" },
