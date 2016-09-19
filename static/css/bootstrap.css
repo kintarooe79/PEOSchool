@@ -3040,17 +3040,18 @@ to{background-position:0 0;}
     margin-top: -0.1ex;
     height: 2.0ex;
 }
+
 .ui_field_label {
-  line-height: 180%;
+  /* line-height: 180%; */
   font-weight: bold;
-  color: black;
-  width: 29%;
-  display: block;
-  float: left;
-  clear: left;
-  text-align: right;
+  /* color: black; */
+  /* width: 29%; */
+  /* display: block; */
+  /* float: left; */
+  /* clear: left; */
+  /* text-align: right; */
   padding-right: 0.5em;
-  height: 35px;
+  /* height: 35px; */
 }
 .area_list .area {
   background-color:  #d5d5d5;
