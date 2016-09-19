@@ -16,7 +16,7 @@ jsProtect(function() {
         draggedElement = originalElement.cloneNode(true);
         originalElement.style.visibility = "hidden";
         draggedElement.style.margin = 0;
-        draggedElement.style.position = "relative";
+        draggedElement.style.position = "absolute";
         draggedElement.style.left = elementOffsetX = originalElement.offsetLeft;
         draggedElement.style.top  = elementOffsetY = originalElement.offsetTop;
         draggedElement.style.width  = originalElement.clientWidth;
