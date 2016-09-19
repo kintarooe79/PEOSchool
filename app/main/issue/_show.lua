@@ -305,7 +305,7 @@ ui.container {
             end
           end
           if app.session.member_id and app.session.member:has_voting_right_for_unit_id(issue.area.unit_id) then
-            if not issue.fully_frozen and not issue.closed then
+            if not issue.half_frozen and not issue.fully_frozen and not issue.closed then
               links[#links + 1] = {
                 attr = { class = "btn btn-primary large_btn filter_btn fixclick action spaceline" },
                 text = _ "Create alternative initiative",
