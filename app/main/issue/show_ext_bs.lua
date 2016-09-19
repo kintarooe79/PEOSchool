@@ -421,11 +421,11 @@ ui.container {
                                             content = function()
                                               local resource = ResourceIssue:by_issue_id(issue_id)
                                               if resource ~= nil then
-                                                    execute.view { 
-                                                      module = "attachment",
-                                                      view = "list",
-                                                      id = issue.id
-                                                    }                                                                       
+                                                execute.view { 
+                                                  module = "attachment",
+                                                  view = "list",
+                                                  id = issue.id
+                                                }                                                                       
                                               end
                                               if issue.member_id == app.session.member_id and not issue.half_frozen and not issue.closed then
                                                 ui.link {
@@ -790,6 +790,7 @@ ui.container {
                                   end
                                 end
                               end
+                              if issue.member_id == app.session.member_id and not issue.half_frozen and not issue.closed then
                               ui.link {
                                 attr = { class = "btn btn-primary btn-create spaceline-bottom fixclick" },
                                 module = "wizard",
@@ -827,6 +828,7 @@ ui.container {
                                   }
                                 end
                               }
+                            end
                             end
                           }
                           if #issue.initiatives > 1 then
