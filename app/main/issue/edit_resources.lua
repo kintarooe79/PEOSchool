@@ -1,10 +1,10 @@
 slot.set_layout("custom")
 
 local issue = Issue:by_id(param.get_id())
-local resource = ResourceIssue:all_resources_by_type(issue.id, "archive_url")
-local link
-if resource ~= nil then
-	link = resource.url
+local resources = ResourceIssue:by_issue_id(issue.id)
+local link = ""
+for i=1, ResourceIssue:count(issue.id) do
+	link = link .. resources[i].url .. "\n"
 end
 ui.title(function()
     ui.container {
@@ -80,12 +80,11 @@ ui.form {
         }
     },
     content = function()
-        ui.field.text {
-            label = _ "Archive link",
-            attr = { id = "link" },
-            name = "link",
-            value = link
-        }
+        ui.tag {
+                tag = "textarea",
+                attr = { id = "link", rows = "8", placeholder = "One link per row", name = "link" },
+                content = link or ""
+            }
         ui.tag {
             tag = "input",
             attr = {

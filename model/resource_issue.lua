@@ -11,13 +11,17 @@ ResourceIssue:add_reference {
 }
 
 function ResourceIssue:by_issue_id(issue_id)
-    return self:new_selector():add_where { "issue_id = ?", issue_id }:optional_object_mode():exec()
+    return self:new_selector():add_where { "issue_id = ?", issue_id }:exec()
 end
 
-function ResourceIssue:all_resources(issue_id)
-    return self:new_selector():add_where { "issue_id = ?", issue_id }:optional_object_mode():exec()
+function ResourceIssue:by_issue_id_and_type(issue_id, resource_type)
+    return self:new_selector():add_where { "issue_id = ? AND type = ?", issue_id, resource_type }:exec()
 end
 
-function ResourceIssue:all_resources_by_type(issue_id, resource_type)
-    return self:new_selector():add_where { "issue_id = ? AND type = ?", issue_id, resource_type }:optional_object_mode():exec()
+function ResourceIssue:count(issue_id)
+    return self:new_selector():add_where{ "issue_id = ?", issue_id }:count()
+end
+
+function ResourceIssue:count_by_type(issue_id, resource_type)
+    return self:new_selector():add_where{ "issue_id = ? AND type = ?", issue_id, resource_type }:count()
 end

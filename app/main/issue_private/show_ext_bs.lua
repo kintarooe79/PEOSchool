@@ -434,7 +434,7 @@ ui.container {
                                               end
                                               if issue.member_id == app.session.member_id and not issue.half_frozen and not issue.closed then
                                                 ui.link {
-                                                  module = "issue",
+                                                  module = "issue_private",
                                                   view = "edit_resources",
                                                   id = issue.id,
                                                   attr = { class = "btn btn-primary btn-large large_btn" },

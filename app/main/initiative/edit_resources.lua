@@ -1,10 +1,10 @@
 slot.set_layout("custom")
 
 local initiative = Initiative:by_id(param.get_id())
-local resource = Resource:all_resources_by_type(initiative.id, "archive_url")
-local link
-if resource ~= nil then
-	link = resource.url
+local resources = Resource:by_initiative_id(initiative.id)
+local link = ""
+for i=1, Resource:count(initiative.id) do
+	link = link .. resources[i].url .. "\n"
 end
 ui.title(function()
     ui.container {
@@ -30,7 +30,7 @@ ui.title(function()
                     ui.heading {
                         level = 1,
                         attr = { class = "fittext1 uppercase" },
-                        content = _ "Edit the archive link for this issue"
+                        content = _ "Edit the archive link for this initiative"
                     }
                 end
             }
@@ -80,12 +80,11 @@ ui.form {
         }
     },
     content = function()
-        ui.field.text {
-            label = _ "Archive link",
-            attr = { id = "link" },
-            name = "link",
-            value = link
-        }
+        ui.tag {
+                tag = "textarea",
+                attr = { id = "link", rows = "8", placeholder = "One link per row", name = "link" },
+                content = link or ""
+            }
         ui.tag {
             tag = "input",
             attr = {

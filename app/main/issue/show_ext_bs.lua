@@ -419,7 +419,7 @@ ui.container {
                                         content = function()
                                           ui.container {
                                             content = function()
-                                              local resource = ResourceIssue:by_issue_id(issue_id)
+                                              local resource = ResourceIssue:by_issue_id(issue.id)
                                               if resource ~= nil then
                                                 execute.view { 
                                                   module = "attachment",

@@ -76,7 +76,6 @@ if app.session.member_id ~= nil then
 end
 
 local url = request.get_absolute_baseurl() .. "initiative/show/" .. tostring(initiative.id) .. ".html"
-trace.debug(url)
 --url = string.gsub(url, ":", "\%3A")
 --trace.debug(url)
 url = encode.url { base = request.get_absolute_baseurl(), module = "initiative", view = "show", params = { initiative_id = initiative.id } }
@@ -613,22 +612,16 @@ ui.container {
                               content = function()
                                 ui.container {
                                   content = function()
-                                    local resource = Resource:all_resources_by_type(initiative_id, "video") 
-                                    if resource ~= nil then
-                                      if resource.type == "video" then
-                                        if resource.url == "" or resource.url == nil then
-                                          ui.image {attr = { class = "img-responsive" }, static = "png/video-player.png" }
-                                        elseif string.find(resource.url, "https://www.youtube.com/watch") then
-                                          local code = resource.url:sub(resource.url:find("=") + 1)
-                                          trace.debug("url: " .. resource.url .. "; code: " .. code)
-                                          trace.debug(code)
-                                          slot.put('<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/' .. code .. '\" frameborder=\"0\" allowfullscreen></iframe>')
-                                        else
-                                          slot.put(_"Wrong link format")
-                                        end
+                                    local resource = Resource:by_initiative_id_and_type(initiative.id, 'video')
+                                    if resource ~= nil and resource[1] ~= nil and resource[1].url ~="" then
+                                      if string.find(resource[1].url, "https://www.youtube.com/watch") then
+                                        local code = resource[1].url:sub(resource[1].url:find("=") + 1)
+                                        slot.put('<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/' .. code .. '\" frameborder=\"0\" allowfullscreen></iframe>')
+                                      else
+                                        slot.put(_"Wrong link format")
                                       end
                                     else
-                                      ui.image { static = "png/video-player.png" }
+                                      ui.image {attr = { class = "img-responsive" }, static = "png/video-player.png" }
                                     end
                                     if initiator and initiator.accepted and not initiative.issue.half_frozen and not initiative.issue.closed and not initiative.revoked then
                                       ui.link {
@@ -646,13 +639,15 @@ ui.container {
                             ui.container {
                               attr = { class = "col-md-6 col-sm-12 col-xs-12" },
                               content = function()
-                                local resource = Resource:all_resources_by_type(initiative.id,'archive_url')
+                                local resource = Resource:by_initiative_id(initiative.id)
                                 if resource ~= nil then
                                   execute.view { 
                                     module = "attachment",
                                     view = "list_initiative",
                                     id = initiative.id
-                                  }                                                                       
+                                  }
+                                else
+
                                 end
                                 if initiator and initiator.accepted and not initiative.issue.half_frozen and not initiative.issue.closed and not initiative.revoked then
                                   ui.link {
