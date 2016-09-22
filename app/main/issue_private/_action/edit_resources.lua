@@ -6,7 +6,7 @@ local Archive_type = "https://drive.google.com"
 local play_list_type = "https://www.youtube.com"
 local social_type = "https://www.facebook.com"
 
-if issue.member_id == app.session.member_id and issue.accepted and not issue.half_frozen and not issue.closed then
+if issue.member_id == app.session.member_id and issue.created and not issue.half_frozen and not issue.closed then
   local resources = ResourceIssue:by_issue_id(issue.id)
   for i=1,ResourceIssue:count(issue.id) do
     resources[i]:destroy()
