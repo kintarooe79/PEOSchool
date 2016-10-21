@@ -242,6 +242,12 @@ slot.select("footer_bs", function()
         text = _ "LiquidFeedback",
         external = "http://www.public-software-group.org/liquid_feedback"
     }
+    slot.put(" &middot; ")
+    slot.put(" ")
+    ui.link {
+        text = _ "Parelon",
+        external = "http://www.parelon.it"
+    }
 end)
 
 execute.inner()

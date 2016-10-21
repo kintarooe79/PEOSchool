@@ -25,7 +25,7 @@ if not app.session.member_id then
 												ui.heading {
 													level = 1,
 													content = function()
-														slot.put(_ "PARLAMENTO ELETTRONICO ONLINE")
+														slot.put(_ "PARLAMENTO ELETTRONICO ONLINE <br> Edizione Scuole <br> Regione Umbria - Assemblea legislativa")
 													end
 												}
 										end
@@ -710,7 +710,7 @@ else
 														ui.tag {
 																attr = { class = "col-md-12 text-center" },
 																content = function()
-																	ui.tag { tag = "p", content = _ "Non sei ancora registrato? Clicca qui:" }
+																	ui.tag { tag = "p", content = _ "Non sei ancora registrato? Clicca qui per richiedere il codice d'invito:" }
 																end
 														}
 													end
@@ -723,7 +723,7 @@ else
 																content = function()
 																	ui.link {
 																		content = function()
-																				slot.put(_"<a class ='btn btn-primary large_btn fixclick' href='https://www.parelon.com/?project=sincronizzare-il-token&lang=it' target='_blank'><h3>Registrati</h3></a>")
+																				slot.put(_"<a class ='btn btn-primary large_btn fixclick' href='http://www.consiglio.regione.umbria.it/peo-school-0' target='_blank'><h3>Registrati</h3></a>")
 																		end
 																	}
 																end

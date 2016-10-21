@@ -43,7 +43,7 @@ ui.container {
 		             ui.container {
 		                 attr = { class = "col-md-12 text-center" },
 		                 content = function()
-		                     ui.link {
+		                     ui.container {
 		                         content = function()
 		                             ui.heading { attr = { class = "label label-warning" },level = 1, content = "Questione o Problema N° " .. issue.id .. " - " .. (issue.title or _ "No title for this issue") }
 	                            end

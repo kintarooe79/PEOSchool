@@ -227,6 +227,19 @@ ui.form {
                                                                 slot.put(progresso)
                                                             end
                                                         }
+							ui.heading  { level = 4, attr = { class = "uppercase" }, 
+								content = function()
+							ui.link {
+								text = _ "Syntax help",
+								module = "help",
+								view = "show",
+								id = "wikisyntax_rocketwiki",
+								attr = {target = "_blank", onClick = "this.href=this.href.replace(/wikisyntax[^.]*/g, 'wikisyntax_rocketwiki'" }
+								}
+								end
+								}
+
+
 
                                                         ui.heading { level = 4, attr = { class = "uppercase" }, content = _ "Give the draft text" }
                                                     end

@@ -217,18 +217,6 @@ ui.form {
                                                                 }
                                                             end
                                                         }
-                                                        ui.container {
-                                                            attr = { class = "row" },
-                                                            content = function()
-
-                                                                ui.container {
-                                                                    attr = { class = "col-md-8 col-md-offset-1" },
-                                                                    content = function()
-                                                                        ui.tag { tag = "small", attr = { class = "uppercase" }, content = _ "Maxiumum number of characters is 140 (#{chars} left)" }
-                                                                    end
-                                                                }
-                                                            end
-                                                        }
                                                     end
                                                 }
                                             end
