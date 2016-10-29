@@ -723,7 +723,7 @@ else
 																content = function()
 																	ui.link {
 																		content = function()
-																				slot.put(_"<a class ='btn btn-primary large_btn fixclick' href='http://www.consiglio.regione.umbria.it/peo-school-0' target='_blank'><h3>Registrati</h3></a>")
+																				slot.put(_"<a class ='btn btn-primary large_btn fixclick' href='http://www.consiglio.regione.umbria.it/assemblea-europa/la-voce-dei-giovani/peo-school' target='_blank'><h3>Registrati</h3></a>")
 																		end
 																	}
 																end

@@ -433,7 +433,7 @@ ui.form {
                                             attr = { class = "row" },
                                             content = function()
                                                 ui.container {
-                                                    attr = { class = "col-md-10 col-md-offset-1 collapse", style = "height:60px;" },
+                                                    attr = { class = "col-md-10 col-md-offset-1", style = "height:60px;" },
                                                     content = function()
                                                         ui.tag {
                                                             tag = "textarea",
@@ -623,7 +623,7 @@ ui.form {
                                                 attr = { class = "row" },
                                                 content = function()
                                                     ui.container {
-                                                        attr = { class = "col-md-10 col-md-offset-1 collapse" .. only_draft, style = "height:60px;" },
+                                                        attr = { class = "col-md-10 col-md-offset-1" .. only_draft, style = "height:60px;" },
                                                         content = function()
                                                             ui.tag {
                                                                 tag = "textarea",
