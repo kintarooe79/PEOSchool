@@ -17,34 +17,34 @@ areas_selector:reset_fields()
 :add_field("(SELECT COUNT(*) FROM issue WHERE issue.area_id = area.id AND issue.fully_frozen ISNULL AND issue.closed NOTNULL)", "issues_canceled_count")
 
 if app.session.member_id then
-    areas_selector:add_field({ "(SELECT COUNT(*) FROM issue LEFT JOIN direct_voter ON direct_voter.issue_id = issue.id AND direct_voter.member_id = ? WHERE issue.area_id = area.id AND issue.fully_frozen NOTNULL AND issue.closed ISNULL AND direct_voter.member_id ISNULL)", app.session.member.id }, "issues_to_vote_count"):left_join("membership", "_membership", { "_membership.area_id = area.id AND _membership.member_id = ?", app.session.member.id }):add_field("_membership.member_id NOTNULL", "is_member", { "grouped" }):left_join("delegation", nil, {
-        "delegation.truster_id = ? AND delegation.area_id = area.id AND delegation.scope = 'area'", app.session.member_id
-    }):left_join("member", nil, "member.id = delegation.trustee_id"):add_field("member.id", "trustee_member_id", { "grouped" }):add_field("member.name", "trustee_member_name", { "grouped" })
+  areas_selector:add_field({ "(SELECT COUNT(*) FROM issue LEFT JOIN direct_voter ON direct_voter.issue_id = issue.id AND direct_voter.member_id = ? WHERE issue.area_id = area.id AND issue.fully_frozen NOTNULL AND issue.closed ISNULL AND direct_voter.member_id ISNULL)", app.session.member.id }, "issues_to_vote_count"):left_join("membership", "_membership", { "_membership.area_id = area.id AND _membership.member_id = ?", app.session.member.id }):add_field("_membership.member_id NOTNULL", "is_member", { "grouped" }):left_join("delegation", nil, {
+      "delegation.truster_id = ? AND delegation.area_id = area.id AND delegation.scope = 'area'", app.session.member_id
+      }):left_join("member", nil, "member.id = delegation.trustee_id"):add_field("member.id", "trustee_member_id", { "grouped" }):add_field("member.name", "trustee_member_name", { "grouped" })
 else
-    areas_selector:add_field("0", "issues_to_vote_count")
+  areas_selector:add_field("0", "issues_to_vote_count")
 end
 areas_selector:add_order_by("id")
 
 ui.paginate {
-		selector = areas_selector,
-		per_page = 150,
-		content = function()
-			areas = areas_selector:exec()
-			if #areas == 0 then
-					ui.container {
-						  attr = { class = "row" },
-						  content = function()
-						      ui.container {
-						          attr = { class = "col-md-12 alert alert-simple text-center" },
-						          content = function()
-						              ui.heading { level = 4, content = _ "There are no enabled areas in this unit." }
-						          end
-						      }
-						  end
-					}
-			end
-			for i, area in ipairs(areas) do
-					execute.view { module = "area", view = "_list_entry_ext_bs", params = { area = area, member = member, create = create } }
-			end
-		end
+  selector = areas_selector,
+  per_page = 150,
+  content = function()
+    areas = areas_selector:exec()
+    if #areas == 0 then
+      ui.container {
+        attr = { class = "row" },
+        content = function()
+          ui.container {
+            attr = { class = "col-md-12 alert alert-simple text-center" },
+            content = function()
+              ui.heading { level = 4, content = _ "There are no enabled areas in this unit." }
+            end
+          }
+        end
+      }
+    end
+    for i, area in ipairs(areas) do
+      execute.view { module = "area", view = "_list_entry_ext_bs", params = { area = area, member = member, create = create } }
+    end
+  end
 }
