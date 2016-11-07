@@ -1963,6 +1963,20 @@ fieldset[disabled] .navbar-inverse .btn-link:focus{color:#444;}
   border-radius: 3px;
   border: 1px solid #d9b65c;  
   }
+
+span.diff_removed{
+color:red;
+text-decoration:line-through;
+}
+span.diff_added{
+color:green;
+}
+
+.action.label.active_green1{color:green;}
+.action.label.active_green2{color:green;}
+.action.label.active_red1{color:red;}
+.action.label.active_red2{color:red;}
+.action.label.active_black{color:red;}
   
 a.label:hover,
 a.label:focus{color:#fff;text-decoration:none;cursor:pointer;}
