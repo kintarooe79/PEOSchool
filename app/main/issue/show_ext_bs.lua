@@ -790,7 +790,7 @@ ui.container {
                                   end
                                 end
                               end
-                              if issue.member_id == app.session.member_id and not issue.half_frozen and not issue.closed then
+                              if app.session.member:has_voting_right_for_unit_id(issue.area.unit_id) and not issue.half_frozen and not issue.closed then
                               ui.link {
                                 attr = { class = "btn btn-primary btn-create spaceline-bottom fixclick" },
                                 module = "wizard",
