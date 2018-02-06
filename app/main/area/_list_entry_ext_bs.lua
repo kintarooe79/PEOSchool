@@ -13,7 +13,7 @@ ui.container {
           attr = { class = "col-md-3 text-center spaceline" },
           content = function()
             if create then
-              if app.session.member.elected then
+              if area.unit.id == 4 and app.session.member.elected then
                 ui.link {
                   module = "wizard",
                   view = "shortcut",
@@ -25,7 +25,20 @@ ui.container {
                     ui.heading { level = 4, content = _ "" .. Unit:by_id(area.unit_id).name }
                   end
                 }
-              else
+	      elseif area.unit.id == 4 and not app.session.member.elected then
+		 ui.link {
+                  module = "area",
+                  view = "filters_bs",
+		  id = area.id,
+                  attr = { class = "btn btn-primary btn_margin fixclick" },
+                  image = {static = "png/"..area.unit.name..".png"},
+                  content = function()
+                    -- ui.heading { level = 3, content = _ "AREA " .. area.id }
+                    ui.heading { level = 4, content = _ "" .. Unit:by_id(area.unit_id).name }
+                  end
+                }
+ 
+              elseif area.unit.id ~= 4 then 
                 ui.link {
                   module = "wizard",
                   view = "page_bs1",
