@@ -7,14 +7,14 @@ Parlamento Elettronico Online - School Edition
 
 Progetto Peo School
 
-SITO PIATTAFORMA: https://test.parelon.com/parelon/scuole
-
-SITO WEB: http://www.parelon.it/
-
-PAGINA UFFICIALE FACEBOOK: https://www.facebook.com/ParlamentoElettronicoOnline
+SITO PIATTAFORMA: https://peoschool.alumbria.it
 
 
 
 
-ORIGINAL PROJECT:
+
+SITO WEB Progetto originale: http://www.parelon.it/
+
+
+Start PROJECT:
 http://liquidfeedback.org/
