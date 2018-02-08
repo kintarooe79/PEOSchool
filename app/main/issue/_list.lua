@@ -123,8 +123,8 @@ filters.content = function()
                 content = function() 
 
                     for i, issue in ipairs(issues) do
-
-                        execute.view {
+			if issue.area.unit.public then
+			 execute.view {
                             module = "issue",
                             view = "_show",
                             params = {
@@ -133,6 +133,19 @@ filters.content = function()
                                 for_member = for_member
                             }
                         }
+
+			else
+			    execute.view {
+                            module = "issue_private",
+                            view = "_show",
+                            params = {
+                                issue = issue,
+                                for_listing = true,
+                                for_member = for_member
+                            }
+                        }
+
+			end
                     end
                 end
             }

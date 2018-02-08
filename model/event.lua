@@ -84,7 +84,11 @@ function Event.object:send_notification()
         elseif self.suggestion_id then
           url = request.get_absolute_baseurl() .. "suggestion/show/" .. self.suggestion_id .. ".html"
         else
-          url = request.get_absolute_baseurl() .. "issue/show_ext_bs/" .. self.issue_id .. ".html"
+          if self.issue.area.unit.public then
+	  url = request.get_absolute_baseurl() .. "issue/show_ext_bs/" .. self.issue_id .. ".html" 
+  	  else
+url = request.get_absolute_baseurl() .. "issue_private/show_ext_bs/" .. self.issue_id .. ".html"
+	  end
         end
         
         body = body .. _("[event mail]       URL: #{url}", { url = url }) .. "\n\n"
