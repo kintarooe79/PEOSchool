@@ -426,8 +426,8 @@ ui.container {
                                                   module = "vote",
                                                   view = "list",
                                                   id = issue.id,
-                                                  params = { issue_id = issue.id },
-                                                  content = function()                                                                    
+                                                --  params = { issue_id = issue.id },
+                                                  content = function()
                                                     ui.heading { level = 2, attr = { class = "spaceline btn btn-large btn-primary" }, content = _ "Vote now" }
                                                   end
                                                 }
