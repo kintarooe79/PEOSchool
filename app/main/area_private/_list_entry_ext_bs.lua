@@ -14,10 +14,10 @@ ui.container {
                             attr = { class = "col-md-3 text-center spaceline" },
                             content = function()
                                 if create then
-                                    if app.session.member.elected then
+                                    if app.session.member.elected or app.session.member.auditor then
                                         ui.link {
                                             module = "wizard_private",
-                                            view = "shortcut",
+                                            view = "page_bs1",
                                             params = { area_id = area.id, unit_id = area.unit_id, area_name = area.name, unit_name = Unit:by_id(area.unit_id).name },
                                             attr = { class = "btn btn-primary btn_margin fixclick" },
 				                            image = {static = "png/"..imgPath..".png"},
@@ -28,10 +28,11 @@ ui.container {
                                         }
                                     else
                                         ui.link {
-                                            module = "wizard_private",
-                                            view = "page_bs1",
-                                            params = { area_id = area.id, unit_id = area.unit_id, area_name = area.name, unit_name = Unit:by_id(area.unit_id).name },
-                                            attr = { class = "btn btn-primary btn_margin fixclick" },
+                                            module = "area_private",
+                                            view = "filters_bs",
+                                            -- params = { area_id = area.id, unit_id = area.unit_id, area_name = area.name, unit_name = Unit:by_id(area.unit_id).name },
+                                            id = area.id,
+					    attr = { class = "btn btn-primary btn_margin fixclick" },
 				                                    image = {static = "png/"..imgPath..".png"},
                                             content = function()
                                              --   ui.heading { level = 3, content = _ "AREA " .. area.id }
@@ -58,7 +59,7 @@ end
 										           attr = { class = "row text-center" },
 										           content = function()
 				                                
-				                        execute.view { module = "area", view = "_head_ext_bs", params = { area = area, hide_unit = true, show_content = true, member = member } }
+				                        execute.view { module = "area_private", view = "_head_ext_bs", params = { area = area, hide_unit = true, show_content = true, member = member } }
 				                        --          end }
 				                        --        end }
 				                        ui.tag {attr = { class = "h2 spaceline-bottom" },content = _ "Issues:" }

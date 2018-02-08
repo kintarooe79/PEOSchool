@@ -22,6 +22,18 @@ if unit.public == false and app.session.member == nil then
   return
 end
 
+
+if unit.public == false and not app.session.member:has_voting_right_for_unit_id(area.unit_id) then
+   execute.view {
+        module = "index",
+        view = "index"
+}
+  slot.put_into("error", "You must be a member of this table to have access to the private area.")
+  return
+end
+
+
+
 execute.view {
     module = "initiative",
     view = "_show_bs",

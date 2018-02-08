@@ -30,6 +30,16 @@ if not unit.public and not app.session then
   return
 end
 
+if unit.public == false and not app.session.member:has_voting_right_for_unit_id(area.unit_id) then
+  execute.view {
+    module = "index",
+    view = "index"
+  }
+  slot.put_into("error", "You must be a member of this table to have access to the private area.")
+  return
+end
+
+
 local function round(num, idp)
   return tonumber(string.format("%." .. (idp or 0) .. "f", num))
 end
@@ -166,7 +176,7 @@ ui.container {
                   content = function()
                     ui.container {
                       content = function()
-                        execute.view { module = "issue", view = "info_box", params = { issue = issue } }
+                        execute.view { module = "issue_private", view = "info_box", params = { issue = issue } }
                       end
                     }
                   end
@@ -804,7 +814,7 @@ ui.container {
                               if app.session.member_id and app.session.member:has_voting_right_for_unit_id(issue.area.unit_id) and not issue.half_frozen and not issue.closed then
                                 ui.link {
                                   attr = { class = "btn btn-primary btn-create spaceline-bottom fixclick" },
-                                  module = "wizard",
+                                  module = "wizard_private",
                                   params = {
                                     issue_id = issue.id,
                                     area_id = area.id,

@@ -91,7 +91,7 @@ end
                                             }
                                         end
 
-                                        if app.session.member_id == member.id and app.session.member:has_voting_right_for_unit_id(area.unit_id) then
+                                        if app.session.member_id == member.id and app.session.member:has_voting_right_for_unit_id(area.unit_id) and (app.session.member.elected or app.session.member.auditor) then
 
                                             slot.put("")
                                             --[[
@@ -108,9 +108,9 @@ end
                                                 content = function()
                                                     slot.put(_ "Create new issue")
                                                 end,
-                                                module = "initiative",
-                                                view = "new",
-                                                params = { area_id = area.id }
+                                                module = "wizard_private",
+                                                view = "page_bs1",
+                                                params = { area_id = area.id, unit_id = area.unit_id, area_name = area.name, unit_name = Unit:by_id(area.unit_id).name }
                                             }
                                         end
                                     end

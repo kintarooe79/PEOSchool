@@ -8,6 +8,16 @@ if not app.session.member then
   }
 end
 
+if unit.public == false and not app.session.member:has_voting_right_for_unit_id(area.unit_id) then
+  slot.put_into("error", "You must be a member of this table to have access to the private area.")
+  request.redirect {
+    module = "index",
+    view = "index"
+  }
+end
+
+
+
 local issue = Issue:by_id(param.get("issue_id"), atom.integer)
 
 local member_id = param.get("member_id", atom.integer)
