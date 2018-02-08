@@ -12,6 +12,11 @@ if new_password1 ~= new_password2 then
     return false
 end
 
+ if not string.match(new_password1, '%d') or not string.match(new_password1, '%u') or not string.match(new_password1, '%p') then
+        slot.put_into("error", _ "Insert at least 1 decimal and 1 Upper Letter and a special character.")
+        return false
+ end
+
 if #new_password1 < 8 then
     slot.put_into("error", _ "New passwords is too short.")
     return false

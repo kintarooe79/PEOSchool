@@ -6,16 +6,16 @@ local unit = Unit:by_id(id)
 
 ui.title(function()
     ui.container {
-        attr = { class = "row-fluid text-left" },
+        attr = { class = "row text-left" },
         content = function()
             ui.container {
-                attr = { class = "span3" },
+                attr = { class = "col-md-3" },
                 content = function()
                     ui.link {
                         attr = { class = "btn btn-primary btn-large large_btn fixclick btn-back" },
                         module = "admin",
                         view = "unit_list",
-                        image = {attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
+                        image = { attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
                         content = _ "Back to previous page"
                     }
                 end
@@ -23,13 +23,13 @@ ui.title(function()
             if unit then
                 ui.tag {
                     tag = "strong",
-                    attr = { class = "span9 text-center" },
+                    attr = { class = "col-md-9 text-center" },
                     content = _("Unit: '#{name}'", { name = unit.name })
                 }
             else
                 ui.tag {
                     tag = "strong",
-                    attr = { class = "span9 text-center" },
+                    attr = { class = "col-md-9 text-center" },
                     content = _ "Add new unit"
                 }
             end

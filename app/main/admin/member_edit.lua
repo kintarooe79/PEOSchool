@@ -6,16 +6,16 @@ local member = Member:by_id(id)
 
 ui.title(function()
     ui.container {
-        attr = { class = "row-fluid text-left" },
+        attr = { class = "row text-left" },
         content = function()
             ui.container {
-                attr = { class = "span3" },
+                attr = { class = "col-md-3" },
                 content = function()
                     ui.link {
                         attr = { class = "btn btn-primary btn-large large_btn fixclick btn-back" },
                         module = "admin",
                         view = "member_list",
-                        image = {attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
+                        image = { attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
                         content = _ "Back to previous page"
                     }
                 end
@@ -23,13 +23,13 @@ ui.title(function()
             if member then
                 ui.tag {
                     tag = "strong",
-                    attr = { class = "span9 text-center" },
+                    attr = { class = "col-md-9 text-center" },
                     content = _("Member: '#{identification}' (#{name})", { identification = member.identification, name = member.name })
                 }
             else
                 ui.tag {
                     tag = "strong",
-                    attr = { class = "span9 text-center" },
+                    attr = { class = "col-md-9 text-center" },
                     content = _ "Register new member"
                 }
             end
@@ -40,11 +40,17 @@ end)
 
 local units_selector = Unit:new_selector()
 
-if member then
+--[[if member then
     units_selector:left_join("privilege", nil, { "privilege.member_id = ? AND privilege.unit_id = unit.id", member.id }):add_field("privilege.voting_right", "voting_right")
-end
+end]]
 
-local units = units_selector:exec()
+local units
+
+if member then
+   units = Unit:get_flattened_tree{member_id = member.id}
+else
+   units = Unit:get_flattened_tree{}
+end
 
 ui.form {
     attr = { class = "vertical" },
@@ -75,13 +81,42 @@ ui.form {
 
         slot.put("<br />")
 
-        for i, unit in ipairs(units) do
+        --[[for i, unit in ipairs(units) do
             ui.field.boolean {
                 name = "unit_" .. unit.id,
                 label = unit.name,
                 value = unit.voting_right
             }
-        end
+        end]]
+        ui.list {
+					records = units,
+					columns = {
+						  {
+						      content = function(unit)
+						          for i = 1, unit.depth - 1 do
+						              slot.put("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+						          end
+						          local style = ""
+						          if not unit.active then
+						              style = "text-decoration: line-through;"
+						          end
+						          ui.link {						          
+						          		name = "unit_" .. unit.id,
+						          		text = unit.name
+						          }
+						      end
+						  },
+{
+ 	content = function(unit)
+ 	ui.field.boolean {
+         	name = "unit_" .. unit.id,
+     --label = unit.name,
+     value = member and member:has_voting_right_for_unit_id(unit.id) or false
+ }
+ 	end
+ }
+					}
+			}
         slot.put("<br /><br />")
 
         if not member or not member.activated then

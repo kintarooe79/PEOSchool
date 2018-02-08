@@ -1,25 +1,18 @@
-Parlamento Elettronico M5S
+Parlamento Elettronico Online - School Edition
 ==========================
 
-"Parlamento Elettronico M5S" is a fork of the Liquid Feedback platform for the Movimento 5 Stelle Italy
+"Parlamento Elettronico Online - School Edition" is a fork of the Liquid Feedback platform 
 
 
 
-Progetto Parlamento Elettronico REGIONALE del M5S v0.19
+Progetto Peo School
 
-DOCUMENTO DI PROGETTO: http://www.scribd.com/doc/128837378/Progetto-Parlamento-Elettronico-del-Consiglio-Regionale-Lazio-M5S-v019
+SITO PIATTAFORMA: https://test.parelon.com/parelon/scuole
 
-PROTOCOLLO CERTIFICAZIONE UTENTI: https://pdfzen.com/f8c491
-
-GRUPPO DISCUSSIONE PUBBLICO: https://www.facebook.com/groups/discussione.parlamento.m5slazio/
-
-SITO WEB: http://www.parelon.lazio.it/
-
-BLOG: http://parlamentoelettronicom5s.blogspot.it/
+SITO WEB: http://www.parelon.it/
 
 PAGINA UFFICIALE FACEBOOK: https://www.facebook.com/ParlamentoElettronicoOnline
 
-WIKI : https://github.com/Movimento5StelleLazio/ParlamentoElettronicoM5S/wiki
 
 
 

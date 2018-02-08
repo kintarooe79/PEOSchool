@@ -175,11 +175,16 @@ if step > 2 then
         return false
     end
 
+    if not string.match(password1, '%d') or not string.match(password1, '%u') or not string.match(password1, '%p') then
+	slot.put_into("error", _ "Insert at least 1 decimal and 1 Upper Letter and a special character.")
+	return false
+    end
+	
     if password1 ~= password2 then
         slot.put_into("error", _ "Passwords don't match!")
         return false
     end
-
+    
     if #password1 < 8 then
         slot.put_into("error", _ "Passwords must consist of at least 8 characters!")
         return false

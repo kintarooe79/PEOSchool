@@ -11,26 +11,26 @@ end
 
 ui.title(function()
     ui.container {
-        attr = { class = "row-fluid text-left" },
+        attr = { class = "row text-left" },
         content = function()
             ui.container {
-                attr = { class = "span3" },
+                attr = { class = "col-md-3" },
                 content = function()
-                    local redirect_data = request.get_redirect_data() or {module = "index", view = "index", id = "0", params = {} }
+                    local redirect_data = request.get_redirect_data() or { module = "index", view = "index", id = "0", params = {} }
                     ui.link {
                         attr = { class = "btn btn-primary btn-large large_btn fixclick" },
                         module = redirect_data.module,
                         view = redirect_data.view,
                         id = redirect_data.id,
                         params = redirect_data.params,
-                        image = {attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
+                        image = { attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
                         content = _ "Back to previous page"
                     }
                 end
             }
             ui.tag {
                 tag = "strong",
-                attr = { class = "span9 text-center" },
+                attr = { class = "col-md-9 text-center" },
                 content = _ "Search"
             }
         end
@@ -90,10 +90,10 @@ if search_string then
         local issues_selector = Issue:get_search_selector(search_string)
 
         ui.container {
-            attr = { class = "row-fluid" },
+            attr = { class = "row" },
             content = function()
                 ui.container {
-                    attr = { class = "offset2 span8" },
+                    attr = { class = "col-md-offset-2 col-md-8" },
                     content = function()
                         execute.view {
                             module = "issue",

@@ -4,8 +4,7 @@ local auditor = Member:by_id(member.creator_id)
 subject = config.mail_subject_prefix .. _ " - False Identity Report"
 content = slot.use_temporary(function()
     slot.put(_("The user #{sender_realname}(id: #{sender_id}) is reporting a false identity for the user #{member_realname}(id: #{member_id}).\n" ..
-            "#{member_realname} has been certified by the auditor #{auditor_realname}(id: #{auditor_id}).\n\n" ..
-            "Please check that all the identities are correct and corrisponds to the truth.", { sender_realname = (app.session.member.realname and app.session.member.realname or app.session.member.login), sender_id = app.session.member.id, member_realname = (member.realname and member.realname or member.login), member_id = member.id, auditor_realname = (auditor.realname and auditor.realname or auditor.login), auditor_id = auditor.id }))
+            "Please check that all the identities are correct and corrisponds to the truth.", { sender_realname = (app.session.member.realname and app.session.member.realname or app.session.member.login), sender_id = app.session.member.id, member_realname = (member.realname and member.realname or member.login), member_id = member.id }))
 end)
 
 trace.debug("subject: " .. subject)

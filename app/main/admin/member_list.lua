@@ -4,28 +4,38 @@ local search = param.get("search")
 
 ui.title(function()
     ui.container {
-        attr = { class = "row-fluid text-left" },
+        attr = { class = "row text-left" },
         content = function()
             ui.container {
-                attr = { class = "span3" },
+                attr = { class = "col-md-3" },
                 content = function()
                     ui.link {
                         attr = { class = "btn btn-primary btn-large large_btn fixclick btn-back" },
                         module = "admin",
                         view = "index",
-                        image = {attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
+                        image = { attr = { class = "arrow_medium" }, static = "svg/arrow-left.svg" },
                         content = _ "Back to previous page"
                     }
                 end
             }
             ui.tag {
                 tag = "strong",
-                attr = { class = "span9 text-center" },
-                content = _ "Member list"
+                attr = { class = "col-md-9 text-center" },
+                content = _ "Member list" .. ": " .. tostring((db:query("SELECT total_count FROM member_count")[1]).total_count)
             }
         end
     }
 end)
+
+ui.actions(function()
+  ui.link{
+    attr = { class = { "admin_only" } },
+    text = _"Register new member",
+    module = "admin",
+    view = "member_edit"
+  }
+end)
+
 
 ui.form {
     module = "admin",
@@ -54,19 +64,22 @@ ui.paginate {
             records = members_selector:exec(),
             columns = {
                 {
-                    field_attr = { style = "text-align: right;" },
+                    field_attr = { style = "text-align: center; padding:0px 10px 0px 10px" },
                     label = _ "Id",
                     name = "id"
                 },
                 {
+                    field_attr = { style = "text-align: center; padding:0px 10px 0px 10px" },
                     label = _ "Identification",
                     name = "identification"
                 },
                 {
+                    field_attr = { style = "text-align: center; padding:0px 10px 0px 10px" },
                     label = _ "Screen name",
                     name = "name"
                 },
                 {
+                    field_attr = { style = "text-align: center; padding:0px 10px 0px 10px" },
                     label = _ "Admin?",
                     content = function(record)
                         if record.admin then
@@ -75,6 +88,7 @@ ui.paginate {
                     end
                 },
                 {
+                    field_attr = { style = "text-align: center; padding:0px 10px 0px 10px" },
                     content = function(record)
                         if not record.activated then
                             ui.field.text { value = "not activated" }
@@ -86,6 +100,7 @@ ui.paginate {
                     end
                 },
                 {
+                    field_attr = { style = "text-align: center; padding:0px 10px 0px 10px" },
                     content = function(record)
                         if record.locked then
                             ui.field.text { value = "locked" }
@@ -93,6 +108,7 @@ ui.paginate {
                     end
                 },
                 {
+                    field_attr = { style = "text-align: center; padding:0px 10px 0px 10px" },
                     content = function(record)
                         ui.link {
                             attr = { class = "action admin_only" },

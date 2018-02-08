@@ -1,6 +1,6 @@
 local area = param.get("area", "table")
 local member = param.get("member", "table")
-local wizard = param.get("create", boolean)
+local create = param.get("create", atom.boolean) or false
 
 local show_content = param.get("show_content", atom.boolean)
 
@@ -12,43 +12,27 @@ end
 --  execute.view{ module = "unit", view = "_head", params = { unit = area.unit, member = member } }
 --end
 
-ui.container {
-    attr = { class = "row-fluid" },
-    content = function()
-        ui.container {
-            attr = { class = "span12" },
-            content = function()
 
             --    execute.view{ module = "delegation", view = "_info_bs", params = { area = area, member = member } }
 
-                ui.container {
-                    attr = { class = "row-fluid" },
-                    content = function()
                         ui.container {
-                            attr = { class = "span11" },
+                            attr = { class = "col-md-9 spaceline label label-warning" },
                             content = function()
                                 ui.link {
                                     module = "area_private",
                                     view = "filters_bs",
                                     params = { create = create },
-                                    attr = { class = "label label-area fixclick" },
                                     id = area.id,
                                     content = function()
-                                        ui.tag { tag = "strong", content = area.name }
+                                        ui.tag { tag = "h2", content = area.name }
                                     end
                                 }
                             end
                         }
-                    end
-                }
 
                 if show_content then
-
-                    ui.container {
-                        attr = { class = "row-fluid" },
-                        content = function()
                             ui.container {
-                                attr = { class = "span12" },
+                                attr = { class = "col-md-9 spaceline spaceline-bottom" },
                                 content = function()
 
                                 -- actions (members with appropriate voting right only)
@@ -60,12 +44,13 @@ ui.container {
                                         if membership then
 
                                             if app.session.member_id == member.id then
-                                                ui.tag { attr = { class = "label label-success" }, content = _ "You are participating in this area" }
+                                                ui.tag { attr = { class = "label label-success spaceline-bottom" }, content = _ "You are participating in this area" }
                                                 slot.put(" ")
                                                 ui.tag {
                                                     content = function()
-                                                        slot.put("(")
+                                                        slot.put("")
                                                         ui.link {
+																				attr = { class = "label label-inverse spaceline-bottom" },
                                                             text = _ "Withdraw",
                                                             module = "membership",
                                                             action = "update",
@@ -80,7 +65,7 @@ ui.container {
                                                                 }
                                                             }
                                                         }
-                                                        slot.put(")")
+                                                        slot.put("")
                                                     end
                                                 }
                                             else
@@ -89,7 +74,7 @@ ui.container {
 
                                         elseif app.session.member_id == member.id and member:has_voting_right_for_unit_id(area.unit_id) then
                                             ui.link {
-                                                attr = { class = "label label-warning" },
+                                                attr = { class = "btn btn-primary btn_large margin_line text-center spaceline spaceline-bottom" },
                                                 text = _ "Participate in this area",
                                                 module = "membership",
                                                 action = "update",
@@ -106,9 +91,9 @@ ui.container {
                                             }
                                         end
 
-                                        if app.session.member_id == member.id and app.session.member:has_voting_right_for_unit_id(area.unit_id) then
+                                        if app.session.member_id == member.id and app.session.member:has_voting_right_for_unit_id(area.unit_id) and (app.session.member.elected or app.session.member.auditor) and create then
 
-                                            slot.put(" &middot; ")
+                                            slot.put("")
                                             --[[
                                             if area.delegation_info.own_delegation_scope ~= "area" then
                                               ui.link{ text = _"Delegate area", module = "delegation", view = "show", params = { area_id = area.id } }
@@ -119,25 +104,19 @@ ui.container {
                                             --]]
 
                                             ui.link {
-                                                attr = { class = "label label-warning" },
+                                                attr = { class = "btn btn-primary btn_large margin_line text-center" },
                                                 content = function()
                                                     slot.put(_ "Create new issue")
                                                 end,
-                                                module = "initiative",
-                                                view = "new",
-                                                params = { area_id = area.id }
+                                                module = "wizard_private",
+                                                view = "page_bs1",
+                                                params = { area_id = area.id, unit_id = area.unit_id, area_name = area.name, unit_name = Unit:by_id(area.unit_id).name }
                                             }
                                         end
                                     end
                                 end
                             }
-                        end
-                    }
 
                 else
                     slot.put("<br />")
                 end
-            end
-        }
-    end
-}
