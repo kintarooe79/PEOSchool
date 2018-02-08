@@ -6,6 +6,7 @@ if not app.session.member then
     module = "index",
     view = "index"
   }
+return
 end
 
 local issue = Issue:by_id(param.get("issue_id"), atom.integer)
