@@ -1,6 +1,6 @@
 local area = param.get("area", "table")
 local member = param.get("member", "table")
-local wizard = param.get("create", boolean)
+local create = param.get("create", atom.boolean) or false
 
 local show_content = param.get("show_content", atom.boolean)
 
@@ -91,7 +91,7 @@ end
                                             }
                                         end
 
-                                        if app.session.member_id == member.id and app.session.member:has_voting_right_for_unit_id(area.unit_id) and (app.session.member.elected or app.session.member.auditor) then
+                                        if app.session.member_id == member.id and app.session.member:has_voting_right_for_unit_id(area.unit_id) and (app.session.member.elected or app.session.member.auditor) and create then
 
                                             slot.put("")
                                             --[[

@@ -59,7 +59,7 @@ end
 										           attr = { class = "row text-center" },
 										           content = function()
 				                                
-				                        execute.view { module = "area_private", view = "_head_ext_bs", params = { area = area, hide_unit = true, show_content = true, member = member } }
+				                        execute.view { module = "area_private", view = "_head_ext_bs", params = { area = area, hide_unit = true, show_content = true, member = member, create = create } }
 				                        --          end }
 				                        --        end }
 				                        ui.tag {attr = { class = "h2 spaceline-bottom" },content = _ "Issues:" }
