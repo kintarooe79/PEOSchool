@@ -10,6 +10,26 @@ local interest = param.get("interest") or "any"
 local member = app.session.member
 local ftl_btns = param.get("ftl_btns", atom.boolean) or false
 
+if not area.unit.public and not app.session then
+  execute.view {
+    module = "index",
+    view = "index"
+  }
+  slot.put_into("error", "You must be loggen in to have access to the private area.")
+  return
+end
+
+if area.unit.public == false and not app.session.member:has_voting_right_for_unit_id(area.unit_id) then
+  execute.view {
+    module = "index",
+    view = "index"
+  }
+  slot.put_into("error", "You must be a member of this table to have access to the private area.")
+  return
+end
+
+
+
 app.html_title.title = area.name
 app.html_title.subtitle = _("Area")
 
