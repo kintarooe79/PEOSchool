@@ -7,7 +7,7 @@ Parlamento Elettronico Online - School Edition
 
 Progetto Peo School
 
-SITO PIATTAFORMA: https://test.parelon.com/parelon/scuole
+SITO PIATTAFORMA: https://peoschool.alumbria.it
 
 SITO WEB: http://www.parelon.it/
 
